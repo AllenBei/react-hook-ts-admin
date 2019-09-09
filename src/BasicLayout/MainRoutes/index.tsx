@@ -11,6 +11,8 @@ export function MainRoutes(){
         <Switch>
         {routes.map(
             (route, index) => 
+            // console.log(route)
+            //@ts-ignore
             <Route key={index} {...route} />
         )}
         </Switch>
