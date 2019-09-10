@@ -12,7 +12,7 @@ export function MainRoutes(){
         {routes.map(
             (route, index) => 
             // console.log(route)
-            //@ts-ignore
+            //@ts-ignore 因为redux引入导致对象结构变化
             <Route key={index} {...route} />
         )}
         </Switch>

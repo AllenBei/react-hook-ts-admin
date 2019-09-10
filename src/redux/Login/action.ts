@@ -36,15 +36,20 @@ import {
       ...param
     }
     return async (dispatch:any) => {
-
-      const response = await nw.post('/',params)
-
-      if(response.errorCode===0){
-        dispatch(userLoadingSuccess(response.data));
-        dispatch(push('/home'));
-      }else{
-        dispatch(userLoginFail(response.data));
+      try {
+        const response = await nw.post('/',params)
+        console.log(response)
+        if(response.errorCode===0){
+          await dispatch(userLoadingSuccess(response.data));
+          dispatch(push('/home'));
+        }else{
+          await dispatch(userLoginFail(response.data));
+        }
       }
+      catch(err){
+        await dispatch(userLoginFail(err));
+      }
+      
     };
   };
   

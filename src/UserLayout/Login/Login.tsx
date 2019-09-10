@@ -19,7 +19,7 @@ function LoginForms(props:From){
     const handleLogin = (e:any) =>{
         e.preventDefault();
         props.form.validateFields((err:any, values:any) => {
-          console.log(props,'Received values of form: ', values);
+        //   console.log(props,'Received values of form: ', values);
           login(values)
         });
         

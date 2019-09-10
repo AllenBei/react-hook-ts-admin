@@ -21,7 +21,7 @@ export default {
         // console.log(resp)
         // console.log(resp,resolve(resp),type)
       }).error( function ( resp, type ) {
-       //console.log(resp, reject(resp));
+      //  console.log(resp, reject(resp));
         if(resp!==null){
           if(resp.data===null || resp.data === ''){
             if(resp.errorMsg!=="该用户暂无角色")
@@ -34,13 +34,13 @@ export default {
             // return resp.errorMsg
           }
         }
-        if ( resp ) {
-          if(resp.errorMsg!=="该用户暂无角色")
-          {
-            message.error(resp.errorMsg );
-          }
-  
-        } else {
+        // if ( resp ) {
+        //   if(resp.errorMsg!=="该用户暂无角色")
+        //   {
+        //     message.error(resp.errorMsg );
+        //   }
+        // } 
+        else {
             switch ( type ) {
                 case -1:
                   message.error("网络错误"); 
