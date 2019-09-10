@@ -7,12 +7,12 @@ var dev = {
 	imgUrl:'http://192.168.1.5/'
 }
 // build后本地
-var devNginx = {
-}
-//build后外网测试环境
-var build = {
-}
-//正式生产环境
-var prod ={
-}
+// var devNginx = {
+// }
+// //build后外网测试环境
+// var build = {
+// }
+// //正式生产环境
+// var prod ={
+// }
 export default dev;

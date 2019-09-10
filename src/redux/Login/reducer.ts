@@ -1,10 +1,10 @@
 
 import {
-    // USER_LOGIN_REQUEST,
     USER_LOGIN_SUCCESS,
     USER_LOGIN_FAILURE,
-    USER_LOADING_REQUEST,
   } from './constants';
+
+
   const initialState = {
     list:[],
     status:{},
@@ -16,17 +16,11 @@ import {
     switch (action.type) {
       case USER_LOGIN_SUCCESS:
         state.status=action.response
-        localStorage.setItem('name',action.info.userInfo.nickname)
-        localStorage.setItem('avatar',action.info.userInfo.avatar)
-        state.isLoading = false
+        // console.log(action)
         return Object.assign({}, state);
       case USER_LOGIN_FAILURE:
-        state.isLoading = action.isLoading
-        // console.log(state,action)
+        // console.log(action)
         return Object.assign({}, state);
-      case USER_LOADING_REQUEST:
-        state.isLoading = action.isLoading
-      return Object.assign({}, state.isLoading);
       default:
         return state;
     }

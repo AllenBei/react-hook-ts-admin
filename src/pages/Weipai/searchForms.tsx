@@ -4,6 +4,11 @@ import {Form, Row, Col, Input, Button} from 'antd';
 import './index.scss';
 import {SearchInfo} from '../../models/searchInfo'
 
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { bindActionCreators } from 'redux';
+import * as loginAction from '../../redux/Login/action'
+
 interface From {
   from?: SearchInfo;
   [propName: string]: any;
@@ -18,8 +23,19 @@ const WeipaiSearchForms = (props:From) => {
   const handleSearch = (e:any) =>{
     e.preventDefault();
     props.form.validateFields((err:any, values:any) => {
-      console.log('Received values of form: ', values);
+      // console.log(props,'Received values of form: ', values);
+      login(values)
     });
+    
+  }
+
+  const login = (val:any) =>{
+    const {userLoginReq} = props.actions
+    console.log(val);
+    userLoginReq({
+      mobile:val.tel,
+      password:val.realname
+    })
   }
   
   return (
@@ -77,7 +93,21 @@ const WeipaiSearchForms = (props:From) => {
 
 const WeipaiSearch = Form.create({ name: 'WeipaiSearch' })(WeipaiSearchForms);
 
+const mapStateToProps = (state:any) => {
+  return { state:state.login };
+};
+
+const mapDispatchToProps = (dispatch:any) => ({
+  actions: bindActionCreators(loginAction, dispatch)
+});
+
+const withConnect = connect(
+  mapStateToProps,
+  mapDispatchToProps
+);
+
+export default compose(
+  withConnect
+)(WeipaiSearch);
 
 
-
-export default WeipaiSearch;

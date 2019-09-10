@@ -19,7 +19,7 @@ export function Aside(){
       // defaultOpenKeys={['sub1']}
       mode="inline"
       theme="dark"
-      inlineCollapsed={false}
+      // inlineCollapsed={false}
     >
       <Menu.Item key="1">
         <Icon type="pie-chart" />

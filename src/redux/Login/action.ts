@@ -1,54 +1,50 @@
 import {
-    USER_LOGIN_REQUEST,
-    // USER_LOADING_REQUEST,
     USER_LOGIN_FAILURE,
     USER_LOGIN_SUCCESS
   } from './constants';
   import nw from '../../common/http/post'
-  // import { push } from 'react-router-redux'
+  import { loginCheck } from '../../models/common';
+  import { push } from 'react-router-redux'
   
-  export const userLogin =(parmas:any) => {
-    return {
-      type: USER_LOGIN_REQUEST,
-      ...parmas,
-      pid:1
-    }
-  };
-  export const userLoadingSuccess =(info:any) => {
-    // console.log(info)
+
+  interface loginRes {
+    data: any;
+    pid:number;
+    total:number;
+    errorCode:number;
+    errorMsg: string;
+    type:string;
+  }
+
+  export const userLoadingSuccess =(response:loginRes) => {
     return {
       type: USER_LOGIN_SUCCESS,
-      isLoading:false
+      response
     }
   };
-  export const userLoginFail =(info:any) => {
+  export const userLoginFail =(response:loginRes) => {
     return {
       type: USER_LOGIN_FAILURE,
-      isLoading:false
+      response
     }
   };
   
   
-  export const userLoginRes = (param:any) => {
-    const {username:mobile,password} = param
+  export const userLoginReq = (param:loginCheck) => {
     const params = {
       pid:1,
-      mobile,
-      password
+      ...param
     }
     return async (dispatch:any) => {
-        await nw.post('/',params)
-        .then((response:any )=> {
-          if (response.errorCode === 0) {
-            console.log(response.data);
-            dispatch(userLoadingSuccess(response.data));
-          } 
-          return response.data;
-        })
-        .catch((error:any) => {
-          console.log(error);
-          dispatch(userLoginFail(error));
-        })
+
+      const response = await nw.post('/',params)
+
+      if(response.errorCode===0){
+        dispatch(userLoadingSuccess(response.data));
+        dispatch(push('/home'));
+      }else{
+        dispatch(userLoginFail(response.data));
+      }
     };
   };
   

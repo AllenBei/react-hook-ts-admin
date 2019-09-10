@@ -1,6 +1,6 @@
 // import React, { useState,useEffect } from 'react';
 import React from 'react';
-import { Layout, Menu, Icon } from 'antd';
+import { Layout, Menu, Icon,message } from 'antd';
 import './index.scss';
 
 const { SubMenu } = Menu;
@@ -8,6 +8,18 @@ const { Header } = Layout;
 
 export function BasicLayout(){
   
+  const loginOut = () =>{
+    //清除cookie，可考虑复用
+    let keys=document.cookie.match(/[^ =;]+(?=)/g);
+    if (keys) {
+        for (let i =  keys.length; i--;)
+            document.cookie=keys[i]+'=0;expires=' + new Date( 0).toUTCString()
+    }   
+    message.success('退出登录')
+    setTimeout(() => {
+      window.location.hash=`/user/login`
+    }, 500);
+  }
     
   return (
        <Header className="header">
@@ -27,7 +39,7 @@ export function BasicLayout(){
               </span>
             }
           >
-            <Menu.Item key="loginOut">退出登录</Menu.Item>
+            <Menu.Item key="loginOut" onClick={loginOut}>退出登录</Menu.Item>
           </SubMenu>
         </Menu>
       </Header>

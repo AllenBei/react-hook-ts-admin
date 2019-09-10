@@ -15,9 +15,9 @@ import login from './redux/Login/reducer'
  */
 
 // Initial routing state
-const routeInitialState = {
-  location: null,
-};
+// const routeInitialState = {
+//   location: null,
+// };
 
 /**
  * Merge route into the global application state

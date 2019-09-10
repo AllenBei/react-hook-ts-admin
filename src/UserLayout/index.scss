@@ -1,0 +1,29 @@
+.main-login{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: center;
+  background-color:aliceblue;
+  background-image: url('../common/img/bg.jpg');
+  height: 100%;
+  width: 100%;
+  .flex-main{
+    margin-top: 110px;
+  }
+
+  .logo{
+    display: block;
+    margin-bottom: 80px;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 36px;
+    color: aliceblue;
+    font-weight: bold;
+    font-family: Helvetica, sans-serif;
+  }
+}
