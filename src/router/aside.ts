@@ -4,14 +4,14 @@ export const asideData = [
         url:'/home',
         child:null
     },
-    {
-        menu:'管理',
-        url:'/weipai',
-        child:[
-            {
-                item:'微拍',
-                url:'/weipai'
-            }
-        ]
-    }
+    // {
+    //     menu:'管理',
+    //     url:'/weipai',
+    //     child:[
+    //         {
+    //             item:'管理二级',
+    //             url:'/weipai'
+    //         }
+    //     ]
+    // }
 ]

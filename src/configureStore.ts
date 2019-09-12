@@ -20,7 +20,7 @@ export default function configureStore(initialState = {}, history:any) {
   const composeEnhancers =
     process.env.NODE_ENV !== 'production' &&
     typeof window === 'object' &&
-    //@ts-ignore
+    //@ts-ignore 因为一开始就没此值，才进行创建
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__  
     //@ts-ignore
       ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
@@ -35,17 +35,6 @@ export default function configureStore(initialState = {}, history:any) {
     initialState,
     composeEnhancers(...enhancers)
   );
-  //
-  // Extensions
-  //@ts-ignore
-  store.injectedReducers = {}; // Reducer registry
-
-  // Make reducers hot reloadable, see http://mxs.is/googmo
-//   if (module.hot) {
-//     module.hot.accept('./reducers', () => {
-//       store.replaceReducer(createReducer(store.injectedReducers));
-//     });
-//   }
 
   return store;
 }

@@ -1,6 +1,5 @@
-// import React, { useState,useEffect } from 'react';
 import React from 'react';
-import {  Menu, Icon } from 'antd';
+import {  Menu } from 'antd';
 import { Link } from 'react-router-dom';
 import './index.scss';
 import { asideData } from '../../router/aside';
@@ -12,11 +11,10 @@ export function Aside(){
   const hash = window.location.hash.split('#')[1]
   const defaultSelectedKeys = hash.split('?')[0]
 
-  //二级栏（因不清楚需求，any）
+  //二级栏（因不清楚需求参数，any）
   const mapNav = (child:any):any  =>{
     return(
       child.map((obj:any)=>{
-        console.log(obj);
         return(
         <Menu.Item key={obj.url}>
           <Link  to={`${obj.url}`} >
@@ -27,11 +25,10 @@ export function Aside(){
       })
     )
   }
-  //一级栏（因不清楚需求，any）
+  //一级栏（因不清楚需求参数，any）
   const mapAside= ():any =>{
     return(
-      asideData.map((obj,index)=>{
-        // console.log(obj,index);
+      asideData.map((obj)=>{
         if(obj.child!==null){
           return(
             <SubMenu
@@ -59,7 +56,7 @@ export function Aside(){
   return (
     <div className='aside'>
       <div className='logo'>
-        <span>叮咚收藏</span>
+        <span>后台管理</span>
       </div>
     <Menu
       defaultSelectedKeys={[defaultSelectedKeys]}

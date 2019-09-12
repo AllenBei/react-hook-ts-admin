@@ -14,9 +14,7 @@ const store = configureStore(initialState, history);
 
 ReactDOM.render(
     <Provider store={store}>
-        <App />
-      {/* <ConnectedRouter history={history}>
-      </ConnectedRouter> */}
+      <App />
     </Provider>
     , document.getElementById('root'));
 serviceWorker.unregister();

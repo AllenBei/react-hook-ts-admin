@@ -2,18 +2,28 @@ import {
     USER_LOGIN_FAILURE,
     USER_LOGIN_SUCCESS
   } from './constants';
-  import nw from '../../common/http/post'
   import { loginCheck } from '../../models/common';
   import { push } from 'react-router-redux'
   
 
   interface loginRes {
-    data: any;
-    pid:number;
-    total:number;
+    data: string;
     errorCode:number;
-    errorMsg: string;
-    type:string;
+    errorMessage: string;
+  }
+  const checkLogin = (param:loginCheck) =>{
+    if(param.username==='admin' && param.password ==='123'){
+      return{
+        data:'',
+        errorCode:0,
+        errorMessage:'登录成功'
+      }
+    }
+    return{
+      data:'',
+      errorCode:-1,
+      errorMessage:'账号或密码错误，登录失败'
+    }
   }
 
   export const userLoadingSuccess =(response:loginRes) => {
@@ -31,19 +41,14 @@ import {
   
   
   export const userLoginReq = (param:loginCheck) => {
-    const params = {
-      pid:1,
-      ...param
-    }
     return async (dispatch:any) => {
       try {
-        const response = await nw.post('/',params)
-        console.log(response)
+        const response = await checkLogin(param)
         if(response.errorCode===0){
-          await dispatch(userLoadingSuccess(response.data));
+          await dispatch(userLoadingSuccess(response));
           dispatch(push('/home'));
         }else{
-          await dispatch(userLoginFail(response.data));
+          await dispatch(userLoginFail(response));
         }
       }
       catch(err){

@@ -5,8 +5,8 @@ import './index.scss';
 const Home: React.FC = () => {
   return (
     <div className="Home">
-      <Button type="primary">Primary</Button>
-      <div className='all'>wwowo</div>
+      <Button type="primary">你好</Button>
+      <div className='all'>The Bay</div>
     </div>
   );
 }

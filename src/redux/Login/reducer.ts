@@ -3,6 +3,7 @@ import {
     USER_LOGIN_SUCCESS,
     USER_LOGIN_FAILURE,
   } from './constants';
+import { message } from 'antd';  
 
 
   const initialState = {
@@ -13,13 +14,13 @@ import {
   };
   
   function loginReducer(state = initialState, action:any) {
+    
     switch (action.type) {
       case USER_LOGIN_SUCCESS:
-        state.status=action.response
-        // console.log(action)
+        message.success(action.response.errorMessage)
         return Object.assign({}, state);
       case USER_LOGIN_FAILURE:
-        // console.log(action)
+        message.error(action.response.errorMessage)
         return Object.assign({}, state);
       default:
         return state;

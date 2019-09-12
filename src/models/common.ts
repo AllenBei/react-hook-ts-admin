@@ -1,4 +1,4 @@
 export interface loginCheck { //登录检验
-    mobile: string;
+    username: string;
     password: string;
   }

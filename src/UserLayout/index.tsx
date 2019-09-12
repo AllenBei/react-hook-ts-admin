@@ -8,7 +8,7 @@ function UserLayout(){
     <div className='main-login'>
         <div className="flex-main">
             <div className='logo'>
-                CMS财务后台系统
+                后台管理系统
             </div>
             <Switch>
                 <Route key={1} path='/user/login' component={Login}  />

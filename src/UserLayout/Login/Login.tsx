@@ -26,23 +26,22 @@ function LoginForms(props:From){
       }
     const login = (val:loginCheck) =>{
     const {userLoginReq} = props.actions
-    const {mobile,password} = val
-    console.log(val);
+    const {username,password} = val
     userLoginReq({
-        mobile,
+        username,
         password
-        })
+      })
     }  
     return (
       <div className='login'>
         <Form onSubmit={handleLogin} className="login-form">
         <Form.Item>
-          {getFieldDecorator('mobile', {
+          {getFieldDecorator('username', {
             rules: [{ required: true, message: '请输入账号!' }],
           })(
             <Input
               prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-              placeholder="mobile"
+              placeholder="username"
             />,
           )}
         </Form.Item>
@@ -57,16 +56,7 @@ function LoginForms(props:From){
             />,
           )}
         </Form.Item>
-        {/* <Form.Item>
-          {getFieldDecorator('remember', {
-            valuePropName: 'checked',
-            initialValue: true,
-          })(<Checkbox>Remember me</Checkbox>)}
-          <Button type="primary" htmlType="submit" className="login-form-button">
-            Log in
-          </Button>
-          Or <a href="">register now!</a>
-        </Form.Item> */}
+        <div>账号：admin,密码：123</div>
         <Button type="primary" htmlType="submit" className="login-form-button">
             登录
         </Button>
