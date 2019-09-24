@@ -8,6 +8,7 @@ import { compose } from 'redux';
 import { bindActionCreators } from 'redux';
 import * as loginAction from '../../redux/Login/action'
 
+//any因未知参数
 interface From {
     from?: loginCheck;
     [propName: string]: any;
@@ -15,7 +16,8 @@ interface From {
 
 function LoginForms(props:From){
     const { getFieldDecorator } = props.form;
-    
+
+    //any因获取antd里form参数，暂不设置
     const handleLogin = (e:any) =>{
         e.preventDefault();
         props.form.validateFields((err:any, values:any) => {
@@ -65,7 +67,8 @@ function LoginForms(props:From){
     )
 }
 const LoginPage = Form.create({ name: 'login' })(LoginForms);
-  
+ 
+//any,不要学我啊，这个最好定义下。
 const mapStateToProps = (state:any) => {
     return { state:state.login };
   };
